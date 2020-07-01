@@ -1,0 +1,33 @@
+version: '3'
+
+volumes:
+    mysql_vol:
+    redis_vol:
+
+services:
+    web:
+        build: . 
+        ports:
+            - "3001:3000"
+        volumes:
+            - .:/rails_test
+        tty: true
+        stdin_open: true
+        depends_on:
+            - db
+            - redis
+                    
+    db:
+        image: mysql:5.7
+        volumes:
+            - mysql_vol:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+
+    redis:
+        image: redis:latest
+        volumes:
+            - redis_vol:/data
+        ports:
+            - "6379:6379"
+        
