@@ -10,7 +10,7 @@ services:
         ports:
             - "3001:3000"
         volumes:
-            - .:/rails_test
+            - .:/rails_redis_blog
         tty: true
         stdin_open: true
         depends_on:

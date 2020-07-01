@@ -11,6 +11,6 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update && apt-get install -y \
     yarn
 
-WORKDIR /rails_test
-COPY Gemfile Gemfile.lock /rails_test/
+WORKDIR /rails_redis_blog
+COPY Gemfile Gemfile.lock /rails_redis_blog/
 RUN bundle install
